@@ -1,0 +1,10 @@
+{
+    "type": "vehicle:crafting",
+    "vehicle": "cvmxtended:semi_truck",
+    "materials": [
+        {
+            "item": "minecraft:iron_ingot",
+            "count": 1
+        }
+    ]
+}
