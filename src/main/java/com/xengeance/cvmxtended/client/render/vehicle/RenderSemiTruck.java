@@ -33,10 +33,10 @@ public class RenderSemiTruck extends AbstractRenderVehicle<SemiTruckEntity>
         //Render the handles bars
         matrixStack.push();
             // Positions the steering wheel in the correct position
-        matrixStack.translate(0.24, 0.33, 0.87);
+        matrixStack.translate(0.251, 0.14, 0.781);
         matrixStack.rotate(Axis.POSITIVE_X.rotationDegrees(-45F));
         //matrixStack.translate(0, -0.02, 0);
-        matrixStack.scale(0.65F, 0.65F, 0.65F);
+        matrixStack.scale(0.475F, 0.475F, 0.475F);
 
         // Rotates the steering wheel based on the wheel angle
         float wheelAngle = entity.prevRenderWheelAngle + (entity.renderWheelAngle - entity.prevRenderWheelAngle) * partialTicks;
