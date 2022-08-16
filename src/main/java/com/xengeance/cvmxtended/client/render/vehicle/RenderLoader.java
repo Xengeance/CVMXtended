@@ -6,7 +6,7 @@ import com.mrcrayfish.vehicle.client.render.AbstractRenderVehicle;
 import com.mrcrayfish.vehicle.client.render.Axis;
 import com.mrcrayfish.vehicle.util.RenderUtil;
 import com.xengeance.cvmxtended.client.SpecialModelsDefs;
-import com.xengeance.cvmxtended.entity.SemiTruckEntity;
+import com.xengeance.cvmxtended.entity.LoaderEntity;
 
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -15,9 +15,8 @@ import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class RenderSemiTruck extends AbstractRenderVehicle<SemiTruckEntity>
+public class RenderLoader extends AbstractRenderVehicle<LoaderEntity>
 {
-
     @Override
     protected boolean shouldRenderFuelLid()
     {
@@ -25,18 +24,19 @@ public class RenderSemiTruck extends AbstractRenderVehicle<SemiTruckEntity>
     }
 
     @Override
-    public void render(SemiTruckEntity entity, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, float partialTicks, int light)
+    public void render(LoaderEntity entity, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, float partialTicks, int light)
     {
         //Body
-        this.renderDamagedPart(entity, SpecialModelsDefs.SEMI_TRUCK_BODY.getModel(), matrixStack, renderTypeBuffer, light);
+        this.renderDamagedPart(entity, SpecialModelsDefs.LOADER_BODY.getModel(), matrixStack, renderTypeBuffer, light);
+
 
         //Render the handles bars
         matrixStack.push();
             // Positions the steering wheel in the correct position
-        matrixStack.translate(0.251, 0.14, 0.781);
+        matrixStack.translate(0, 0.33, 0.0);
         matrixStack.rotate(Axis.POSITIVE_X.rotationDegrees(-45F));
         //matrixStack.translate(0, -0.02, 0);
-        matrixStack.scale(0.475F, 0.475F, 0.475F);
+        matrixStack.scale(0.45F, 0.45F, 0.45F);
 
         // Rotates the steering wheel based on the wheel angle
         float wheelAngle = entity.prevRenderWheelAngle + (entity.renderWheelAngle - entity.prevRenderWheelAngle) * partialTicks;
@@ -50,7 +50,7 @@ public class RenderSemiTruck extends AbstractRenderVehicle<SemiTruckEntity>
     }
 
     @Override
-    public void applyPlayerModel(SemiTruckEntity entity, PlayerEntity player, PlayerModel<AbstractClientPlayerEntity> model, float partialTicks)
+    public void applyPlayerModel(LoaderEntity entity, PlayerEntity player, PlayerModel<AbstractClientPlayerEntity> model, float partialTicks)
     {
         model.bipedRightArm.rotationPointZ = 0f;
         model.bipedLeftArm.rotateAngleZ = 0F;
@@ -67,5 +67,6 @@ public class RenderSemiTruck extends AbstractRenderVehicle<SemiTruckEntity>
 	        model.bipedLeftArm.rotateAngleX = (float) Math.toRadians(-65F + turnRotation);
 	        model.bipedLeftArm.rotateAngleY = (float) Math.toRadians(7F);
 	    }
+
     }
 }

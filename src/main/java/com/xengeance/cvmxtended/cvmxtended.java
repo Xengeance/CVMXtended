@@ -1,15 +1,19 @@
 package com.xengeance.cvmxtended;
 
+import net.minecraftforge.common.MinecraftForge;
 //forge/minecraft/java references
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 //crayfish references
 import com.mrcrayfish.vehicle.proxy.Proxy;
@@ -18,6 +22,7 @@ import com.mrcrayfish.vehicle.proxy.ServerProxy;
 import com.xengeance.cvmxtended.network.*;
 import com.xengeance.cvmxtended.proxy.ClientProxy;
 import com.xengeance.cvmxtended.init.ModVehicleProperties;
+import com.xengeance.cvmxtended.client.ClientEvents;
 import com.xengeance.cvmxtended.init.ModEntities;
 import com.xengeance.cvmxtended.init.ModRecipeSerializers;
 
@@ -28,7 +33,8 @@ public class cvmxtended
 {
     // Directly reference a log4j logger.
 
-    public static final Proxy PROXY = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
+    @SuppressWarnings("deprecation")
+	public static final Proxy PROXY = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
     /*public static final ItemGroup CREATIVE_TAB = new ItemGroup("tabVehicle")
     {
@@ -82,28 +88,29 @@ public class cvmxtended
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(eventBus);
         
         //TODO: Implement config settings
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.serverSpec);
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.clientSpec);
+        final ModLoadingContext modLoadingContext = ModLoadingContext.get();
+        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
+        eventBus.register(Config.class);
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
-        //MinecraftForge.EVENT_BUS.register(new CommonEvents());
+        
+        MinecraftForge.EVENT_BUS.register(new ClientEvents());
         
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)
     {
         PacketHandler.register();
-        //CustomDataSerializers.register();
-        //HeldVehicleDataHandler.register();
         ModVehicleProperties.register();
-        //ItemLookup.init();
-        //ModDataKeys.register();
+        cvmxtended.LOGGER.log(Level.INFO, "COMMON Setup Complete!");
     }
 
     private void onClientSetup(FMLClientSetupEvent event)
     {
         PROXY.setupClient();
+        cvmxtended.LOGGER.log(Level.INFO, "CLIENT Setup Complete!");
     }
 
 }

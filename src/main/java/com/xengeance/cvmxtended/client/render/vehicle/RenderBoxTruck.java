@@ -56,7 +56,7 @@ public class RenderBoxTruck extends AbstractRenderVehicle<BoxTruckEntity>
     @Override
     public void applyPlayerModel(BoxTruckEntity entity, PlayerEntity player, PlayerModel<AbstractClientPlayerEntity> model, float partialTicks)
     {
-        model.bipedRightArm.rotateAngleZ = 0f;
+        model.bipedRightArm.rotationPointZ = 0f;
         model.bipedLeftArm.rotateAngleZ = 0F;
         model.bipedLeftLeg.rotateAngleX = (float) Math.toRadians(-80F);
         model.bipedRightLeg.rotateAngleX = (float) Math.toRadians(-80F);

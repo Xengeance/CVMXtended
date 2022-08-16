@@ -17,7 +17,8 @@ public enum SpecialModelsDefs implements ISpecialModel{
 	
 	BOX_TRUCK_BODY("box_truck_body"),
 	SEMI_TRUCK_BODY("semi_truck_body"),
-	CARGO_DOOR("cargo_door");
+	CARGO_DOOR("cargo_door"),
+	LOADER_BODY("loader_body");
 
     // Add spray can lid
     /**

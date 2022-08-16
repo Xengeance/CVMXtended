@@ -32,6 +32,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvent;
@@ -149,7 +150,17 @@ public class SemiTruckEntity extends LandVehicleEntity
     @Override
     public boolean canBeColored()
     {
-        return false;
+        return true;
     }
     
+    @Override
+	public void writeAdditional(CompoundNBT compound) {
+		super.writeAdditional(compound);
+    }
+    
+
+	@Override
+	public void readAdditional(CompoundNBT compound) {
+		super.readAdditional(compound);
+	}
 }

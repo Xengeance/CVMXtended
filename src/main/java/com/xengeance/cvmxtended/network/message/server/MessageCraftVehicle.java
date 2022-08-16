@@ -1,4 +1,4 @@
-package com.xengeance.cvmxtended.network.message;
+package com.xengeance.cvmxtended.network.message.server;
 
 import com.mrcrayfish.vehicle.block.BlockVehicleCrate;
 import com.mrcrayfish.vehicle.crafting.VehicleRecipe;
@@ -28,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraftforge.fml.network.NetworkEvent.Context;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
@@ -39,9 +40,10 @@ import com.xengeance.cvmxtended.cvmxtended;
 
 /**
  * Author: MrCrayfish
+ * Carry over from vanilla CVM due to scope exposure
+ * Can probably be fixed via a mixin instead
  */
-public class MessageCraftVehicle implements IMessage<MessageCraftVehicle>
-{
+public class MessageCraftVehicle implements IMessage<MessageCraftVehicle>{
     private String vehicleId;
     private BlockPos pos;
 

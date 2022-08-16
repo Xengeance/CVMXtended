@@ -11,7 +11,7 @@
     <mapEntry key="MCP_VERSION" value="20200911.084530"/>
     <mapEntry key="FORGE_VERSION" value="34.1.0"/>
     <mapEntry key="assetIndex" value="1.16"/>
-    <mapEntry key="assetDirectory" value="D:\Minecraft Modding\CVMXtended\.gradle\caches\forge_gradle\assets"/>
+    <mapEntry key="assetDirectory" value="C:\Users\Xengeance\.gradle\caches\forge_gradle\assets"/>
     <mapEntry key="nativesDirectory" value="D:\Minecraft Modding\CVMXtended\build\natives"/>
     <mapEntry key="FORGE_GROUP" value="net.minecraftforge"/>
     <mapEntry key="target" value="fmluserdevclient"/>

@@ -1,5 +1,8 @@
 {
 
     "entity.vehicle.box_truck": "Box Truck",
-    "entity.vehicle.semi_truck": "Semi Truck"
+    "entity.vehicle.semi_truck": "Semi Truck",
+    
+    "text.cvmxtended.chat.lower_implement": "Raising Bucket To Height Level %s.",
+    "text.cvmxtended.chat.raise_implement": "Lowering Bucket To Height Level %s."
 }

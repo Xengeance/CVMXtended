@@ -1,14 +1,30 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
+        //maven { url = 'https://maven.parchmentmc.org' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        //classpath 'org.parchmentmc:librarian:1.+'
+    }
+}
+
+repositories{
+    maven {
+        url 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+    maven {
+        name = 'CurseForge'
+        url = 'https://minecraft.curseforge.com/api/maven/'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -21,7 +37,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 
 //sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-	mappings channel: 'snapshot', version: '20200723-1.16.1'
+    mappings channel: 'snapshot', version: '20200723-1.16.1'
     
     runs {
         client {
@@ -60,21 +76,16 @@ minecraft {
         }
     }
 }
-
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {
-    maven {
-        url = "https://www.cursemaven.com"
-    }
-}
-
 dependencies {
-	minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
+    minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
     
 	implementation fg.deobf('curse.maven:vehicle-286660:3103940')
-    //compile fg.deobf('curse.maven:obfuscate:3067472')
-    //compile fg.deobf('curse.maven:controllable:3068902')
+    implementation fg.deobf('curse.maven:obfuscate-289380:3067472')
+    implementation fg.deobf('curse.maven:controllable-317269:3068902')
+    
+    implementation fg.deobf('curse.maven:configured-457570:3434071')
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

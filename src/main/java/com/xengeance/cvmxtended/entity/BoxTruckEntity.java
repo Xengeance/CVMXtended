@@ -20,18 +20,21 @@ import com.mrcrayfish.vehicle.item.SprayCanItem;
 import com.mrcrayfish.vehicle.network.PacketHandler;
 import com.mrcrayfish.vehicle.network.message.MessageAttachTrailer;
 import com.mrcrayfish.vehicle.network.message.MessageOpenStorage;
-import com.mrcrayfish.vehicle.util.InventoryUtil;
 import com.xengeance.cvmxtended.cvmxtended;
 import com.xengeance.cvmxtended.client.SpecialModelsDefs;
+import com.xengeance.cvmxtended.util.InventoryUtil;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvent;
@@ -163,7 +166,7 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
     @Override
     public boolean canBeColored()
     {
-        return false;
+        return true;
     }
 
 	@Override
@@ -200,7 +203,7 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
         if(compound.contains("Inventory", Constants.NBT.TAG_LIST))
         {
             this.initInventory();
-            InventoryUtil.readInventoryToNBT(compound, "Inventory", inventory);
+            com.mrcrayfish.vehicle.util.InventoryUtil.readInventoryToNBT(compound, "Inventory", inventory);
         }
     }
 
@@ -210,7 +213,7 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
         super.writeAdditional(compound);
         if(this.inventory != null)
         {
-            InventoryUtil.writeInventoryToNBT(compound, "Inventory", inventory);
+            com.mrcrayfish.vehicle.util.InventoryUtil.writeInventoryToNBT(compound, "Inventory", inventory);
         }
     }
 
@@ -246,6 +249,16 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
             }
         }
         return super.processHit(result, rightClick);
+    }
+    
+    @Override
+    protected void onVehicleDestroyed(LivingEntity entity)
+    {
+        super.onVehicleDestroyed(entity);
+        if(this.inventory != null)
+        {
+            InventoryUtil.dropInventoryItems(this.world, this.getPositionVec(), this.inventory);
+        }
     }
     /*
     @Nullable
