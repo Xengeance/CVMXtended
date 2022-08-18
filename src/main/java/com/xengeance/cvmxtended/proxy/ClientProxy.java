@@ -18,6 +18,7 @@ import com.mrcrayfish.vehicle.client.render.vehicle.*;
 import com.mrcrayfish.vehicle.entity.VehicleEntity;
 import com.mrcrayfish.vehicle.proxy.Proxy;
 import com.mrcrayfish.vehicle.util.FluidUtils;
+import com.xengeance.cvmxtended.client.ClientEvents;
 import com.xengeance.cvmxtended.client.SpecialModelsDefs;
 import com.xengeance.cvmxtended.client.render.vehicle.*;
 import com.xengeance.cvmxtended.entity.BoxTruckEntity;
@@ -32,6 +33,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.resources.IReloadableResourceManager;
 import net.minecraft.resources.IResourceManager;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -61,6 +63,9 @@ public class ClientProxy extends CommonProxy implements Proxy {
 			            },
             		backgroundExecutor).thenCompose(stage::markCompleteAwaitingOthers).whenComplete((aVoid, throwable) -> SpecialModelsDefs.clearModelCache()));
         }
+        
+
+        MinecraftForge.EVENT_BUS.register(new ClientEvents());
 	}
 	
 	public void registerEntityRenders() 
