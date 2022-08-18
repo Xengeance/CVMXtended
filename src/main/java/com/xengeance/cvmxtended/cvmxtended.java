@@ -109,6 +109,7 @@ public class cvmxtended
     private void onClientSetup(FMLClientSetupEvent event)
     {
         PROXY.setupClient();
+        
         cvmxtended.LOGGER.log(Level.INFO, "CLIENT Setup Complete!");
     }
 

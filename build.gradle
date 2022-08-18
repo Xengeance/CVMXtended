@@ -29,7 +29,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.1a'
+version = '0.0.1a_hotfix'
 group = 'com.xengeance' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cvmxtended'
 
@@ -83,6 +83,7 @@ dependencies {
     
 	implementation fg.deobf('curse.maven:vehicle-286660:3103940')
     implementation fg.deobf('curse.maven:obfuscate-289380:3067472')
+    
     //implementation fg.deobf('curse.maven:controllable-317269:3068902')
     
     //implementation fg.deobf('curse.maven:configured-457570:3434071')

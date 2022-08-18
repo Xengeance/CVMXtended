@@ -66,6 +66,7 @@ public class ClientProxy extends CommonProxy implements Proxy {
         
 
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
+        
 	}
 	
 	public void registerEntityRenders() 
