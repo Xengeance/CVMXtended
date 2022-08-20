@@ -71,8 +71,8 @@ public class BlockUtil {
 				Block b = vehicle.world.getBlockState(blockPos).getBlock();
 				
 				//dbScanCache will contain all possible blockPos to be used by the debug renderer
+				//this is transmitted to the client via packet and is informational only
 				dBScanCache.add(blockPos);
-				//TODO: add check for filtering out fluid blocks
 				
 				//blockScanCache is selectively filtered to only contain valid positions to execute faster 
 				//during block breaking and is used solely on the server thread.
@@ -80,9 +80,9 @@ public class BlockUtil {
 					blockScanCache.add(blockPos);
 			}
 		}
-		//use the contents of dBScanCache to sync to client entities so they have an updated instance of the vehicle's
-		//debug rendering block cache
-		if(!dBScanCache.isEmpty()) {
+		//use the contents of dBScanCache to sync to client entities so they have an updated instance of the server vehicle
+		//entity's debug rendering block cache
+		if(!dBScanCache.isEmpty() && dBScanCache != null) {
 			vehicle.setBlockScanCache(dBScanCache);
 			PacketHandler.instance.send(PacketDistributor.TRACKING_ENTITY.with(() -> vehicle), 
 					new CSubmitScanVectorBlockData(dBScanCache, vehicle.getEntityId()));

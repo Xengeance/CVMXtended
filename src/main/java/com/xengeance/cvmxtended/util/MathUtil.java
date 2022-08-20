@@ -109,4 +109,16 @@ public class MathUtil {
 		
 		return angle;
 	}
+	
+	public static Vector2f FindPointOnCircle(float radius, float angle) {
+		return FindPointOnCircle((double) radius, (double) angle);
+	}
+	
+
+	
+	public static Vector2f FindPointOnCircle(double radius, double angle) {
+		double x = Math.cos(angle) * radius;
+		double y = Math.sin(angle) * radius;
+		return new Vector2f((float)x, (float)y);
+	}
 }

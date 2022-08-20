@@ -29,7 +29,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.1a_hotfix'
+version = '0.0.2a'
 group = 'com.xengeance' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cvmxtended'
 

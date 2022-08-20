@@ -72,6 +72,7 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
         this.setMaxSpeed(6);
         this.setTurnSensitivity(3);
         this.initInventory();
+        this.setBoundingBox(new AxisAlignedBB(.25, 0, .25, .75, .5, .75));
         
         //cvmxtended.LOGGER.log(Level.INFO, this.getType().getRegistryName().toString());     
     }
@@ -241,7 +242,7 @@ public class BoxTruckEntity extends LandVehicleEntity implements IStorage
     {
         if(rightClick)
         {
-            if(result.getPartHit().getModel() == SpecialModelsDefs.CARGO_DOOR)
+            if(result.getPartHit() == CARGO_DOOR)
             {
                 PacketHandler.instance.sendToServer(new MessageOpenStorage(this.getEntityId()));
                 Minecraft.getInstance().player.swingArm(Hand.MAIN_HAND);

@@ -57,7 +57,7 @@ public class ModVehicleProperties {
         properties.addSeat(new Seat(new Vector3d(3.75, 5.65, 10.5), false));
         VehicleProperties.setProperties(ModEntities.SemiTruck.get(), properties);
         
-        /* Loaderk */
+        /* Loader */
         properties = new VehicleProperties();
         properties.setAxleOffset(-4.0F);
         properties.setWheelOffset(5.4F);

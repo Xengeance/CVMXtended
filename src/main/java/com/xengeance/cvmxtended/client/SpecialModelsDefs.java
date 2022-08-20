@@ -16,9 +16,13 @@ import net.minecraftforge.fml.common.Mod;
 public enum SpecialModelsDefs implements ISpecialModel{
 	
 	BOX_TRUCK_BODY("box_truck_body"),
-	SEMI_TRUCK_BODY("semi_truck_body"),
 	CARGO_DOOR("cargo_door"),
-	LOADER_BODY("loader_body");
+	
+	SEMI_TRUCK_BODY("semi_truck_body"),
+	
+	LOADER_BODY("loader_body"),
+	LOADER_LIFT_ARM("loader_lift_arm"),
+	LOADER_BUCKET("loader_bucket");
 
     // Add spray can lid
     /**

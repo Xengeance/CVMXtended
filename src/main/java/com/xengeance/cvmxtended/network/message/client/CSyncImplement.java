@@ -75,9 +75,11 @@ public class CSyncImplement implements IMessage<CSyncImplement>{
 				if(loader != null && loader instanceof LoaderEntity) {
 					boolean validTypeInvoked = false;
 					if(message.activationType == ACTIVATE_TYPE.RAISE) {
+						loader.setBucketHeightOffset(message.heightOffset);
 						loader.doImplementRaise();
 						validTypeInvoked = true;
 					}else if (message.activationType == ACTIVATE_TYPE.LOWER) {
+						loader.setBucketHeightOffset(message.heightOffset);
 						loader.doImplementLower();
 						validTypeInvoked = true;
 					}

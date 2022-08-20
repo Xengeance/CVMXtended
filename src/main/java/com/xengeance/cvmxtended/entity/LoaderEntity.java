@@ -112,14 +112,13 @@ public class LoaderEntity extends LandVehicleEntity implements IStorage {
 	}
 	
 	public List<BlockPos> getDebugScanCache() {
-		if(debugBlockScanCache != null && !debugBlockScanCache.isEmpty()) {
-	
-			//cvmxtended.LOGGER.log(Level.INFO, "Retrieving cache... it's not null!");
-			List<BlockPos> result = Lists.newArrayList(debugBlockScanCache);
+		if(debugBlockScanCache == null) {
+
+			//instantiate the block cache if it is null for some reason
+			List<BlockPos> result = Lists.newArrayList();
 			return  result;
 		}
-
-		return null;
+		return Lists.newArrayList(debugBlockScanCache);
 	}
 	
 	

@@ -29,9 +29,9 @@ public class ModEntities {
 
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
 
-    public static final RegistryObject<EntityType<BoxTruckEntity>> BoxTruck = registerVehicle("box_truck", BoxTruckEntity::new, 2.0F, 1.0F);
-    public static final RegistryObject<EntityType<SemiTruckEntity>> SemiTruck = registerVehicle("semi_truck", SemiTruckEntity::new, 2.0F, 1.0F);
-    public static final RegistryObject<EntityType<LoaderEntity>> Loader = registerVehicle("loader", LoaderEntity::new, 2.0F, 1.0F);
+    public static final RegistryObject<EntityType<BoxTruckEntity>> BoxTruck = registerVehicle("box_truck", BoxTruckEntity::new, 2.0F, .25F);
+    public static final RegistryObject<EntityType<SemiTruckEntity>> SemiTruck = registerVehicle("semi_truck", SemiTruckEntity::new, 2.0F, .25F);
+    public static final RegistryObject<EntityType<LoaderEntity>> Loader = registerVehicle("loader", LoaderEntity::new, 2.0F, .25F);
     
     private static <T extends Entity> RegistryObject<EntityType<T>> registerVehicle(String id, BiFunction<EntityType<T>, World, T> function, float width, float height)
     {

@@ -52,7 +52,7 @@ public class RenderUtils {
 		}
 		if(loader != null) {
 			List<BlockPos> cache = loader.getDebugScanCache();
-			if (cache == null)
+			if (cache == null | cache.isEmpty())
 				return;
 			
 		    IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
